@@ -1,0 +1,20 @@
+micronaut:
+  application:
+    name: nossaCasaDoCodigo
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    dialect: POSTGRES
+    schema-generate: CREATE_DROP
+    schema: casa-do-codigo
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
