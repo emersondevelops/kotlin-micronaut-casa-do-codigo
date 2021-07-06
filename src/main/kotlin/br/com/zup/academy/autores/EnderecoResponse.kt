@@ -1,3 +1,3 @@
 package br.com.zup.academy.autores
 
-data class EnderecoResponse(val logradouro: String, val localidade: String, val uf: String)
+data class EnderecoResponse(val address: String, val city: String, val state: String)
