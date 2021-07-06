@@ -1,6 +1,7 @@
 package br.com.zup.academy.autores
 
 import io.micronaut.http.HttpResponse
+import io.micronaut.http.HttpStatus
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
@@ -27,7 +28,7 @@ class CadastraAutorController(val autorRepository: AutorRepository, val endereco
             val uri = UriBuilder.of("/autores/{id}").expand(mutableMapOf(Pair("id", autor.id)))
             HttpResponse.created(uri)
         } catch (e: HttpClientResponseException) {
-            HttpResponse.badRequest("CEP inválido ou serviço indisponível")
+            HttpResponse.badRequest("CEP inválido ou serviço de consulta indisponível")
         }
     }
 }
