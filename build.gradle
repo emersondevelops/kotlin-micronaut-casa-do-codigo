@@ -47,6 +47,15 @@ dependencies {
     // XML
     implementation("io.micronaut.xml:micronaut-jackson-xml")
 
+    // Teste
+    testAnnotationProcessor("io.micronaut:micronaut-inject-java:2.5.7")
+    testImplementation("io.micronaut:micronaut-http-client:2.5.7")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testImplementation("org.mockito:mockito-core:3.11.1")
+    testImplementation("io.micronaut.test:micronaut-test-junit5:2.3.7")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testImplementation("com.h2database:h2")
+
 }
 
 
