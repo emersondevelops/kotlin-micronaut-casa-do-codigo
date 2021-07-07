@@ -18,3 +18,8 @@ jpa:
       hibernate:
         hbm2ddl:
           auto: update
+
+# Desabilita serialização o timestamp no corpo das respostas
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false
