@@ -1,0 +1,17 @@
+micronaut:
+  application:
+    name: nossaCasaDoCodigo
+
+datasources:
+  default:
+    url: jdbc:h2:mem:testDB;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    driverClassName: org.h2.Driver
+
+# Desabilita serialização o timestamp no corpo das respostas
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false
+
+logger:
+  levels:
+    io.micronaut.transaction: DEBUG
