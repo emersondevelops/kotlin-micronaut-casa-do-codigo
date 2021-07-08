@@ -19,10 +19,8 @@ class CadastraAutorController(val autorRepository: AutorRepository, val endereco
     @Transactional
     fun cadastra(@Valid @Body request: NovoAutorRequest): HttpResponse<Any> {
 
-        val enderecoResponse: HttpResponse<EnderecoResponse>
-
         return try {
-            enderecoResponse = enderecoClient.consulta(request.cep)
+            val enderecoResponse: HttpResponse<EnderecoResponse> = enderecoClient.consulta(request.cep)
             val autor = request.paraAutor(enderecoResponse.body()!!)
             autorRepository.save(autor)
             val uri = UriBuilder.of("/autores/{id}").expand(mutableMapOf(Pair("id", autor.id)))
