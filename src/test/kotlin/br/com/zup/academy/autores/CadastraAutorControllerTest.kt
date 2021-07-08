@@ -28,6 +28,7 @@ internal class CadastraAutorControllerTest {
     @Test
     fun `Deve cadastrar um novo autor`() {
 
+        // Cenário (nem sempre há)
         val novoAutorRequest = NovoAutorRequest(
             "Emerson Bezerra",
             "emerson.bezerra@zup.com.br",
@@ -35,16 +36,18 @@ internal class CadastraAutorControllerTest {
             "58051-220",
             "99"
         )
-
         val enderecoResponse = EnderecoResponse("Rua das Larajeiras", "Rio de Janeiro", "RJ")
-        Mockito.`when`(enderecoClient.consulta(novoAutorRequest.cep)).thenReturn(HttpResponse.ok(enderecoResponse))
 
+        // Ação
+        Mockito.`when`(enderecoClient.consulta(novoAutorRequest.cep)).thenReturn(HttpResponse.ok(enderecoResponse))
         val request = HttpRequest.POST("/autores", novoAutorRequest)
         val response = client.toBlocking().exchange(request, Any::class.java)
 
+        // Validação
         assertEquals(HttpStatus.CREATED, response.status)
         assertTrue(response.headers.contains("Location"))
         assertTrue(response.header("Location")!!.matches("/autores/\\d+".toRegex()))
+
     }
 
     @MockBean(EnderecoClient::class)
